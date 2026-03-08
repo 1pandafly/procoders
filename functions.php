@@ -150,6 +150,12 @@ add_action( 'widgets_init', 'procoders_widgets_init' );
 function procoders_scripts() {
 	wp_enqueue_style( 'procoders-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'procoders-style', 'rtl', 'replace' );
+	wp_enqueue_style(
+		'procoders-mega-menu',
+		get_template_directory_uri() . '/css/mega-menu.css',
+		array( 'procoders-style' ),
+		_S_VERSION
+	);
 
 	wp_enqueue_script( 'procoders-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -190,6 +196,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Mega menu helpers and walker.
+ */
+require get_template_directory() . '/inc/mega-menu.php';
 
 /**
  * Benefits block helper functions.

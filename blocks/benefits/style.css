@@ -99,6 +99,23 @@
 	display: block;
 }
 
+.wp-block-procoders-benefits-section .procoders-benefits__icon-svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+	color: currentColor;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__card:hover .procoders-benefits__icon-svg [fill]:not([fill="none"]),
+.wp-block-procoders-benefits-section .procoders-benefits__card:focus-within .procoders-benefits__icon-svg [fill]:not([fill="none"]) {
+	fill: currentColor !important;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__card:hover .procoders-benefits__icon-svg [stroke]:not([stroke="none"]),
+.wp-block-procoders-benefits-section .procoders-benefits__card:focus-within .procoders-benefits__icon-svg [stroke]:not([stroke="none"]) {
+	stroke: currentColor !important;
+}
+
 .wp-block-procoders-benefits-section .procoders-benefits__text {
 	font-size: 1.12rem;
 	line-height: 1.35;

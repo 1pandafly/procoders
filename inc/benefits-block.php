@@ -10,6 +10,243 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Return sanitized inline SVG for attachment ID.
+ *
+ * @param int    $attachment_id Attachment ID.
+ * @param string $class_name    Class for root svg.
+ * @return string
+ */
+function procoders_get_inline_svg_attachment( $attachment_id, $class_name = '' ) {
+	$attachment_id = absint( $attachment_id );
+
+	if ( $attachment_id < 1 ) {
+		return '';
+	}
+
+	$mime_type = get_post_mime_type( $attachment_id );
+
+	if ( 'image/svg+xml' !== $mime_type ) {
+		return '';
+	}
+
+	$file_path = get_attached_file( $attachment_id );
+
+	if ( ! $file_path || ! file_exists( $file_path ) ) {
+		return '';
+	}
+
+	$svg = file_get_contents( $file_path ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+
+	if ( ! is_string( $svg ) || '' === trim( $svg ) ) {
+		return '';
+	}
+
+	if ( '' !== $class_name ) {
+		$svg = preg_replace(
+			'/<svg\b([^>]*)>/i',
+			'<svg$1 class="' . esc_attr( $class_name ) . '" aria-hidden="true" focusable="false">',
+			$svg,
+			1
+		);
+	}
+
+	$allowed_svg = array(
+		'svg'            => array(
+			'class'               => true,
+			'id'                  => true,
+			'xmlns'               => true,
+			'xmlns:xlink'         => true,
+			'viewbox'             => true,
+			'width'               => true,
+			'height'              => true,
+			'fill'                => true,
+			'stroke'              => true,
+			'stroke-width'        => true,
+			'stroke-linecap'      => true,
+			'stroke-linejoin'     => true,
+			'stroke-miterlimit'   => true,
+			'fill-rule'           => true,
+			'clip-rule'           => true,
+			'opacity'             => true,
+			'transform'           => true,
+			'preserveaspectratio' => true,
+			'role'                => true,
+			'aria-hidden'         => true,
+			'focusable'           => true,
+		),
+		'g'              => array(
+			'class'             => true,
+			'id'                => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'fill-rule'         => true,
+			'clip-rule'         => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'path'           => array(
+			'class'             => true,
+			'id'                => true,
+			'd'                 => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'fill-rule'         => true,
+			'clip-rule'         => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'rect'           => array(
+			'class'             => true,
+			'id'                => true,
+			'x'                 => true,
+			'y'                 => true,
+			'width'             => true,
+			'height'            => true,
+			'rx'                => true,
+			'ry'                => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'circle'         => array(
+			'class'             => true,
+			'id'                => true,
+			'cx'                => true,
+			'cy'                => true,
+			'r'                 => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'ellipse'        => array(
+			'class'             => true,
+			'id'                => true,
+			'cx'                => true,
+			'cy'                => true,
+			'rx'                => true,
+			'ry'                => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'line'           => array(
+			'class'             => true,
+			'id'                => true,
+			'x1'                => true,
+			'y1'                => true,
+			'x2'                => true,
+			'y2'                => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'polyline'       => array(
+			'class'             => true,
+			'id'                => true,
+			'points'            => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'polygon'        => array(
+			'class'             => true,
+			'id'                => true,
+			'points'            => true,
+			'fill'              => true,
+			'stroke'            => true,
+			'stroke-width'      => true,
+			'stroke-linecap'    => true,
+			'stroke-linejoin'   => true,
+			'stroke-miterlimit' => true,
+			'opacity'           => true,
+			'transform'         => true,
+		),
+		'use'            => array(
+			'class'      => true,
+			'id'         => true,
+			'href'       => true,
+			'xlink:href' => true,
+			'x'          => true,
+			'y'          => true,
+		),
+		'defs'           => array(),
+		'lineargradient' => array(
+			'id'                => true,
+			'x1'                => true,
+			'x2'                => true,
+			'y1'                => true,
+			'y2'                => true,
+			'gradientunits'     => true,
+			'gradienttransform' => true,
+		),
+		'radialgradient' => array(
+			'id'                => true,
+			'cx'                => true,
+			'cy'                => true,
+			'r'                 => true,
+			'fx'                => true,
+			'fy'                => true,
+			'gradientunits'     => true,
+			'gradienttransform' => true,
+		),
+		'stop'           => array(
+			'offset'       => true,
+			'stop-color'   => true,
+			'stop-opacity' => true,
+		),
+		'clippath'       => array(
+			'id' => true,
+		),
+		'mask'           => array(
+			'id'                  => true,
+			'x'                   => true,
+			'y'                   => true,
+			'width'               => true,
+			'height'              => true,
+			'maskunits'           => true,
+			'maskcontentunits'    => true,
+		),
+		'title'          => array(),
+		'desc'           => array(),
+	);
+
+	return wp_kses( $svg, $allowed_svg );
+}
+
+/**
  * Build query args for benefits list.
  *
  * @param string $taxonomy Taxonomy slug.
@@ -112,15 +349,21 @@ function procoders_render_benefit_card( $post_id, $is_featured = false ) {
 		$icon_id = (int) get_field( 'icon', $post_id );
 
 		if ( $icon_id > 0 ) {
-			$icon = wp_get_attachment_image(
-				$icon_id,
-				'medium',
-				false,
-				array(
-					'class'   => 'procoders-benefits__icon-image',
-					'loading' => 'lazy',
-				)
-			);
+			$inline_svg = procoders_get_inline_svg_attachment( $icon_id, 'procoders-benefits__icon-svg' );
+
+			if ( '' !== $inline_svg ) {
+				$icon = $inline_svg;
+			} else {
+				$icon = wp_get_attachment_image(
+					$icon_id,
+					'medium',
+					false,
+					array(
+						'class'   => 'procoders-benefits__icon-image',
+						'loading' => 'lazy',
+					)
+				);
+			}
 		}
 	}
 
@@ -132,7 +375,12 @@ function procoders_render_benefit_card( $post_id, $is_featured = false ) {
 	?>
 	<article class="<?php echo esc_attr( $card_classes ); ?>">
 		<?php if ( $icon ) : ?>
-			<div class="procoders-benefits__icon"><?php echo wp_kses_post( $icon ); ?></div>
+			<div class="procoders-benefits__icon">
+				<?php
+				// SVG is sanitized in procoders_get_inline_svg_attachment(); image fallback is wp_get_attachment_image().
+				echo $icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				?>
+			</div>
 		<?php endif; ?>
 		<div class="procoders-benefits__text"><?php echo esc_html( $text ); ?></div>
 	</article>

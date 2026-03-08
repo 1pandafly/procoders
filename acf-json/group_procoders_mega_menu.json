@@ -1,0 +1,440 @@
+{
+    "key": "group_procoders_mega_menu",
+    "title": "Mega Menu (Menu Item)",
+    "fields": [
+        {
+            "key": "field_procoders_mega_enable",
+            "label": "Enable Mega Menu",
+            "name": "mega_enable",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Turn on to use custom 3-column mega menu for this top-level menu item.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "Enabled",
+            "ui_off_text": "Disabled"
+        },
+        {
+            "key": "field_procoders_mega_columns_title",
+            "label": "Columns 2-3 Title",
+            "name": "mega_columns_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Shared heading for column 2 and column 3.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_procoders_mega_col_1_learning_title",
+            "label": "Column 1 Learning Title",
+            "name": "mega_col_1_learning_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Title for Learning Center group in column 1.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Learning Center",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_procoders_mega_col_1_blog_title",
+            "label": "Column 1 Blog Title",
+            "name": "mega_col_1_blog_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Title for Blog group in column 1.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Blog",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_procoders_mega_col_1_learning_posts",
+            "label": "Column 1 Learning Posts",
+            "name": "mega_col_1_learning_posts",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Select only Learning Center posts for the first group.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "learning-center",
+                "learning_center"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "min": "",
+            "max": "",
+            "elements": "",
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_procoders_mega_col_1_blog_posts",
+            "label": "Column 1 Blog Posts",
+            "name": "mega_col_1_blog_posts",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Select only Blog posts for the second group.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "min": "",
+            "max": "",
+            "elements": "",
+            "allow_in_bindings": 0,
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_procoders_mega_col_2_links",
+            "label": "Column 2 Links",
+            "name": "mega_col_2_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add links for column 2.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Link",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_procoders_mega_col_2_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_procoders_mega_col_2_links"
+                },
+                {
+                    "key": "field_procoders_mega_col_2_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_procoders_mega_col_2_links"
+                }
+            ]
+        },
+        {
+            "key": "field_procoders_mega_col_3_links",
+            "label": "Column 3 Links",
+            "name": "mega_col_3_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add links for column 3.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Link",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_procoders_mega_col_3_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_procoders_mega_col_3_links"
+                },
+                {
+                    "key": "field_procoders_mega_col_3_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_procoders_mega_col_3_links"
+                }
+            ]
+        },
+        {
+            "key": "field_procoders_mega_footer_title",
+            "label": "Bottom Block Title",
+            "name": "mega_footer_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_procoders_mega_footer_text",
+            "label": "Bottom Block Text",
+            "name": "mega_footer_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_procoders_mega_footer_button",
+            "label": "Bottom Button",
+            "name": "mega_footer_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_procoders_mega_enable",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "location\/menu-1"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772998806
+}

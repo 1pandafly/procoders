@@ -46,7 +46,14 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'procoders' ); ?></button>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+				<span class="screen-reader-text"><?php esc_html_e( 'Primary Menu', 'procoders' ); ?></span>
+				<span class="menu-toggle__bars" aria-hidden="true">
+					<span class="menu-toggle__bar"></span>
+					<span class="menu-toggle__bar"></span>
+					<span class="menu-toggle__bar"></span>
+				</span>
+			</button>
 			<?php
 			wp_nav_menu(
 				array(
