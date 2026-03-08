@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "procoders/benefits-section",
+	"version": "1.0.0",
+	"title": "Benefits Section",
+	"category": "design",
+	"icon": "screenoptions",
+	"description": "Benefits cards with taxonomy tabs and AJAX load more.",
+	"textdomain": "procoders",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Some H2 title"
+		},
+		"taxonomy": {
+			"type": "string",
+			"default": "benefits-category"
+		},
+		"postsPerPage": {
+			"type": "number",
+			"default": 3
+		}
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true,
+			"gradients": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style.css",
+	"editorStyle": "file:./editor.css",
+	"render": "file:./render.php"
+}

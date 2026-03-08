@@ -163,10 +163,15 @@ add_action( 'wp_enqueue_scripts', 'procoders_scripts' );
  * Register custom Gutenberg blocks from metadata.
  */
 function procoders_register_blocks() {
-	$hero_limited_block_path = get_template_directory() . '/blocks/hero-limited';
+	$block_paths = array(
+		get_template_directory() . '/blocks/hero-limited',
+		get_template_directory() . '/blocks/benefits',
+	);
 
-	if ( file_exists( $hero_limited_block_path . '/block.json' ) ) {
-		register_block_type( $hero_limited_block_path );
+	foreach ( $block_paths as $block_path ) {
+		if ( file_exists( $block_path . '/block.json' ) ) {
+			register_block_type( $block_path );
+		}
 	}
 }
 add_action( 'init', 'procoders_register_blocks' );
@@ -185,6 +190,11 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Benefits block helper functions.
+ */
+require get_template_directory() . '/inc/benefits-block.php';
 
 /**
  * Customizer additions.

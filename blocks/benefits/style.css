@@ -1,0 +1,155 @@
+.wp-block-procoders-benefits-section {
+	--procoders-benefits-accent-1: #ef1450;
+	--procoders-benefits-accent-2: #4d2fd9;
+	--procoders-benefits-blue: #1a35ff;
+	--procoders-benefits-text: #2b2b2b;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__inner {
+	--procoders-content-size: var(--wp--style--global--content-size, 1160px);
+	width: 100%;
+	max-width: calc(var(--procoders-content-size) + 48px);
+	margin-inline: auto;
+	padding-inline: 24px;
+	box-sizing: border-box;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__title {
+	margin: 0 0 1.5rem;
+	text-align: center;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__tabs-wrap {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1.75rem;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__tabs {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.25rem;
+	border: 2px solid var(--procoders-benefits-blue);
+	border-radius: 999px;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__tab {
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: var(--procoders-benefits-text);
+	font-weight: 600;
+	line-height: 1;
+	padding: 0.7rem 2rem;
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__tab.is-active {
+	background: var(--procoders-benefits-accent-1);
+	color: #fff;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.4rem;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	min-height: 270px;
+	padding: 2rem 1.25rem;
+	background: #fff;
+	border: 2px solid var(--procoders-benefits-accent-2);
+	border-radius: 10px;
+	overflow: hidden;
+	transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__card.is-featured {
+	background: #fff;
+	border-color: var(--procoders-benefits-accent-2);
+	color: inherit;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__card:hover,
+.wp-block-procoders-benefits-section .procoders-benefits__card:focus-within {
+	background: linear-gradient(170deg, var(--procoders-benefits-accent-1) 0%, var(--procoders-benefits-accent-2) 100%);
+	border-color: transparent;
+	color: #fff;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__icon {
+	width: 60px;
+	height: 60px;
+	margin: 0 0 1rem;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__icon-image {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__text {
+	font-size: 1.12rem;
+	line-height: 1.35;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.8rem;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__load-more {
+	border: 0;
+	border-radius: 999px;
+	background: var(--procoders-benefits-accent-1);
+	color: #fff;
+	font-weight: 700;
+	padding: 0.95rem 3rem;
+	cursor: pointer;
+	transition: filter 0.2s ease;
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__load-more:hover,
+.wp-block-procoders-benefits-section .procoders-benefits__load-more:focus {
+	filter: brightness(0.92);
+}
+
+.wp-block-procoders-benefits-section .procoders-benefits__empty {
+	grid-column: 1 / -1;
+	text-align: center;
+	padding: 2rem;
+	border: 1px dashed #c7c7c7;
+	border-radius: 10px;
+}
+
+.wp-block-procoders-benefits-section.is-loading {
+	opacity: 0.82;
+}
+
+@media (max-width: 980px) {
+	.wp-block-procoders-benefits-section .procoders-benefits__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 640px) {
+	.wp-block-procoders-benefits-section .procoders-benefits__tab {
+		padding-inline: 1.2rem;
+	}
+
+	.wp-block-procoders-benefits-section .procoders-benefits__grid {
+		grid-template-columns: 1fr;
+	}
+}

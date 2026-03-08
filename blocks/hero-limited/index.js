@@ -1,15 +1,15 @@
 ( function( blocks, blockEditor, components, element, i18n ) {
-	var el = element.createElement;
-	var InnerBlocks = blockEditor.InnerBlocks;
-	var InspectorControls = blockEditor.InspectorControls;
-	var MediaUpload = blockEditor.MediaUpload;
-	var MediaUploadCheck = blockEditor.MediaUploadCheck;
-	var useBlockProps = blockEditor.useBlockProps;
-	var PanelBody = components.PanelBody;
-	var Button = components.Button;
+	const el = element.createElement;
+	const InnerBlocks = blockEditor.InnerBlocks;
+	const InspectorControls = blockEditor.InspectorControls;
+	const MediaUpload = blockEditor.MediaUpload;
+	const MediaUploadCheck = blockEditor.MediaUploadCheck;
+	const useBlockProps = blockEditor.useBlockProps;
+	const PanelBody = components.PanelBody;
+	const Button = components.Button;
 
-	var ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/buttons' ];
-	var TEMPLATE = [
+	const ALLOWED_BLOCKS = [ 'core/heading', 'core/paragraph', 'core/buttons' ];
+	const TEMPLATE = [
 		[
 			'core/heading',
 			{
@@ -100,15 +100,15 @@
 
 	blocks.registerBlockType( 'procoders/hero-limited-section', {
 		edit: function( props ) {
-			var attributes = props.attributes;
-			var setAttributes = props.setAttributes;
+			const attributes = props.attributes;
+			const setAttributes = props.setAttributes;
 
-			var leftBackgroundImageId = attributes.leftBackgroundImageId;
-			var leftBackgroundImageUrl = attributes.leftBackgroundImageUrl;
-			var rightImageId = attributes.rightImageId;
-			var rightImageUrl = attributes.rightImageUrl;
+			const leftBackgroundImageId = attributes.leftBackgroundImageId;
+			const leftBackgroundImageUrl = attributes.leftBackgroundImageUrl;
+			const rightImageId = attributes.rightImageId;
+			const rightImageUrl = attributes.rightImageUrl;
 
-			var className = 'procoders-hero-limited-section';
+			let className = 'procoders-hero-limited-section';
 
 			if ( leftBackgroundImageUrl ) {
 				className += ' has-left-background-image';
@@ -118,14 +118,14 @@
 				className += ' has-right-image';
 			}
 
-			var blockProps = useBlockProps( {
+			const blockProps = useBlockProps( {
 				className: className,
 			} );
 
-			var leftPanelStyle = leftBackgroundImageUrl
+			const leftPanelStyle = leftBackgroundImageUrl
 				? { backgroundImage: 'url(' + leftBackgroundImageUrl + ')' }
 				: undefined;
-			var rightPanelStyle = rightImageUrl
+			const rightPanelStyle = rightImageUrl
 				? { backgroundImage: 'url(' + rightImageUrl + ')' }
 				: undefined;
 
@@ -225,10 +225,10 @@
 			);
 		},
 		save: function( props ) {
-			var attributes = props.attributes;
-			var leftBackgroundImageUrl = attributes.leftBackgroundImageUrl;
-			var rightImageUrl = attributes.rightImageUrl;
-			var className = 'procoders-hero-limited-section';
+			const attributes = props.attributes;
+			const leftBackgroundImageUrl = attributes.leftBackgroundImageUrl;
+			const rightImageUrl = attributes.rightImageUrl;
+			let className = 'procoders-hero-limited-section';
 
 			if ( leftBackgroundImageUrl ) {
 				className += ' has-left-background-image';
@@ -238,14 +238,14 @@
 				className += ' has-right-image';
 			}
 
-			var blockProps = useBlockProps.save( {
+			const blockProps = useBlockProps.save( {
 				className: className,
 			} );
 
-			var leftPanelStyle = leftBackgroundImageUrl
+			const leftPanelStyle = leftBackgroundImageUrl
 				? { backgroundImage: 'url(' + leftBackgroundImageUrl + ')' }
 				: undefined;
-			var rightPanelStyle = rightImageUrl
+			const rightPanelStyle = rightImageUrl
 				? { backgroundImage: 'url(' + rightImageUrl + ')' }
 				: undefined;
 
@@ -279,7 +279,7 @@
 		deprecated: [
 			{
 				save: function() {
-					var blockProps = useBlockProps.save( {
+					const blockProps = useBlockProps.save( {
 						className: 'procoders-hero-limited-section',
 					} );
 

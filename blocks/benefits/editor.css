@@ -1,0 +1,10 @@
+.editor-styles-wrapper .wp-block-procoders-benefits-section {
+	border: 1px dashed #d6d6d6;
+	padding: 1rem;
+}
+
+.editor-styles-wrapper .wp-block-procoders-benefits-section .procoders-benefits__editor-note {
+	margin: 0;
+	font-size: 0.95rem;
+	opacity: 0.75;
+}
