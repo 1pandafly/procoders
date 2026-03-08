@@ -128,13 +128,12 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "100",
                 "class": "",
                 "id": ""
             },
             "post_type": [
-                "learning-center",
-                "learning_center"
+                "learning-center"
             ],
             "post_status": [
                 "publish"
@@ -146,8 +145,8 @@
             "return_format": "id",
             "min": "",
             "max": "",
-            "elements": "",
             "allow_in_bindings": 0,
+            "elements": "",
             "bidirectional": 0,
             "bidirectional_target": []
         },
@@ -169,7 +168,7 @@
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "100",
                 "class": "",
                 "id": ""
             },
@@ -186,8 +185,8 @@
             "return_format": "id",
             "min": "",
             "max": "",
-            "elements": "",
             "allow_in_bindings": 0,
+            "elements": "",
             "bidirectional": 0,
             "bidirectional_target": []
         },
@@ -436,5 +435,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1772998806
+    "modified": 1773000228
 }

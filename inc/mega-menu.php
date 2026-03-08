@@ -315,10 +315,19 @@ class Procoders_Mega_Menu_Walker extends Walker_Nav_Menu {
 
 		if ( 0 === (int) $depth && $this->is_mega_enabled( $element ) ) {
 			$this->has_children = ! empty( $children_elements[ $id ] );
+			$walker_args        = array();
 
-			$this->start_el( $output, $element, $depth, ...array_values( $args ) );
+			if ( is_array( $args ) ) {
+				$walker_args = array_values( $args );
+			} elseif ( null !== $args ) {
+				$walker_args = array( $args );
+			}
+
+			$menu_args = isset( $walker_args[0] ) ? $walker_args[0] : null;
+
+			$this->start_el( $output, $element, $depth, $menu_args, $id );
 			$output .= $this->render_mega_panel( $element );
-			$this->end_el( $output, $element, $depth, ...array_values( $args ) );
+			$this->end_el( $output, $element, $depth, $menu_args );
 
 			if ( isset( $children_elements[ $id ] ) ) {
 				unset( $children_elements[ $id ] );
