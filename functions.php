@@ -46,6 +46,16 @@ function procoders_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
+	// Enable Gutenberg design tools in a classic theme.
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'style.css' );
+	add_theme_support( 'appearance-tools' );
+	add_theme_support( 'custom-spacing' );
+	add_theme_support( 'custom-line-height' );
+	add_theme_support( 'custom-units' );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
@@ -150,6 +160,18 @@ function procoders_scripts() {
 add_action( 'wp_enqueue_scripts', 'procoders_scripts' );
 
 /**
+ * Register custom Gutenberg blocks from metadata.
+ */
+function procoders_register_blocks() {
+	$hero_limited_block_path = get_template_directory() . '/blocks/hero-limited';
+
+	if ( file_exists( $hero_limited_block_path . '/block.json' ) ) {
+		register_block_type( $hero_limited_block_path );
+	}
+}
+add_action( 'init', 'procoders_register_blocks' );
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
@@ -176,3 +198,28 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Save and load ACF field groups in the theme's acf-json directory.
+ */
+function procoders_acf_json_save_point( $path ) {
+	$path = get_stylesheet_directory() . '/acf-json';
+
+	if ( ! is_dir( $path ) ) {
+		wp_mkdir_p( $path );
+	}
+
+	return $path;
+}
+add_filter( 'acf/settings/save_json', 'procoders_acf_json_save_point' );
+
+/**
+ * Ensure ACF loads local JSON from the theme first.
+ */
+function procoders_acf_json_load_point( $paths ) {
+	$theme_json_path = get_stylesheet_directory() . '/acf-json';
+
+	array_unshift( $paths, $theme_json_path );
+
+	return array_unique( $paths );
+}
+add_filter( 'acf/settings/load_json', 'procoders_acf_json_load_point' );

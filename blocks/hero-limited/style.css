@@ -1,0 +1,136 @@
+.wp-block-procoders-hero-limited-section {
+	overflow: hidden;
+	width: 100vw;
+	max-width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+	--procoders-content-size: var(--wp--style--global--content-size, 1160px);
+	--procoders-inline-space: clamp(1rem, 3vw, 3rem);
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	align-items: stretch;
+	width: 100%;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left {
+	display: flex;
+	align-items: center;
+	padding-block: clamp(2rem, 4vw, 4rem);
+	padding-inline-start: max(
+		var(--procoders-inline-space),
+		calc((100vw - var(--procoders-content-size)) / 2)
+	);
+	padding-inline-end: var(--procoders-inline-space);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-width: 0;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content {
+	width: 100%;
+	max-width: min(100%, calc(var(--procoders-content-size) * 0.583333));
+	min-width: 0;
+	display: grid;
+	gap: var(--wp--style--block-gap, 1rem);
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content :where(h1, h2, h3, h4, h5, h6) {
+	margin: 0;
+	max-width: 100%;
+	overflow-wrap: normal;
+	word-break: normal;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content p {
+	margin: 0;
+	max-width: 100%;
+	overflow-wrap: break-word;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-buttons {
+	gap: clamp(0.75rem, 1.6vw, 1.6rem);
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__right {
+	min-height: 100%;
+	min-width: 0;
+	background-color: #f3f3f3;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__right.is-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	background-image: none;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-button {
+	position: relative;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-button::after {
+	content: "";
+	position: absolute;
+	inset: 5px -5px -5px 5px;
+	z-index: 0;
+	background: #1a35ff;
+	transition: background-color 0.2s ease;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-button .wp-block-button__link {
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 164px;
+	min-height: 56px;
+	padding: 0.75rem 1.45rem;
+	border: 0;
+	border-radius: 0;
+	font-family: "Barlow", inherit;
+	font-size: clamp(1rem, 1.2vw, 1.25rem);
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.2;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #fff;
+	color: #1a35ff;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-button .wp-block-button__link:hover,
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-button .wp-block-button__link:focus {
+	background: #1a35ff;
+	color: #fff;
+}
+
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-button:hover::after,
+.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left-content .wp-block-button:focus-within::after {
+	background: #fff;
+}
+
+@media (max-width: 991px) {
+	.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__layout {
+		grid-template-columns: 1fr;
+	}
+
+	.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__right {
+		min-height: 320px;
+	}
+}
+
+@media (max-width: 640px) {
+	.wp-block-procoders-hero-limited-section .procoders-hero-limited-section__left {
+		padding: 1.5rem;
+	}
+}
